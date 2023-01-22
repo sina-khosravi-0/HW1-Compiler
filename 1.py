@@ -47,7 +47,7 @@ def scanner():
         if (state == 20):
             return [token.lstrip() , 'operator']        
         if (state == -1):
-            return [token.lstrip()[:-1:] , 'error']
+            return [token.lstrip() , 'error']
 
 def nextChar():
     global current_char_index
@@ -80,5 +80,6 @@ with open ('output.txt', 'w') as f:
         worksheet.write(i ,0 ,out[0])
         worksheet.write(i ,1 ,out[1])
         i = i + 1
-
+        if (out[1] == 'error'):
+            break
 workbook.close()
